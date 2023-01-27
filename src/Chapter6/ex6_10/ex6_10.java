@@ -22,8 +22,8 @@ import java.util.Scanner;
 //[수희]:
 //	3  3  3  수희님이 이겼습니다!
 class Person{
-    private String name;
-    int num1,num2,num3;
+    public String name;
+    private int num1,num2,num3;
     public Person(String name){
         this.name=name;
     }
@@ -32,7 +32,7 @@ class Person{
         num2=(int)((Math.random()*3)+1);
         num3=(int)((Math.random()*3)+1);
         System.out.println("\t"+num1+" "+num2+" "+num3);
-        if(num1==num2 && num2 ==3){
+        if(num1==num2 && num2 ==num3){
             return true;
         }
         else{
@@ -51,8 +51,20 @@ public class ex6_10 {
         Person p2=new Person(s2);
         String buffer=sc.nextLine();
         while(true){
+            System.out.print("["+p1.name+"]:<Enter>");
+            buffer=sc.nextLine();
+            if(p1.game()){
+                System.out.println(p1.name+"님이 이겼습니다.");
+                break;
+            }
+            System.out.println("아쉽군요!");
+            System.out.print("["+p2.name+"] : <Enter>");
+            buffer=sc.nextLine();
+            if(p2.game()){
+                System.out.println(p2.name+"님이 이겼습니다.");
+                break;
+            }
+            System.out.println("아쉽군요!");
         }
-
-
     }
 }
